@@ -9,8 +9,12 @@
     register: get_kibana
     until: get_kibana is succeeded
     tags: kibana
-
-
+  - name: Create directrory for Kibana
+    become: true
+    file:
+      state: directory
+      path: "{{ kibana_home }}"
+    tags: kibana
   - name: Extract kibana in the installation directory
     become: true
     unarchive:
