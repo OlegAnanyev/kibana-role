@@ -43,6 +43,7 @@
       group: "root"
   #разрешим доступ к кибане по ip сервера, а не только по localhost
   - name: Make Kibana avalaible on any interface
+    become: yes  
     lineinfile:
       path: "{{ kibana_home }}/config/kibana.yml"
       line: 'server.host: "0.0.0.0"'
